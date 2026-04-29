@@ -3,8 +3,8 @@
 import { useEffect, useRef } from 'react'
 import Image from 'next/image'
 
-const LINE1 = ['Building', 'futures']
-const LINE2 = ["that", "can't", 'be', 'taken', 'away']
+const LINE1 = ['Children’s','book','author'];
+const LINE2 = ["Educational", "IP developer"]
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null)

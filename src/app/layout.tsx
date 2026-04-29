@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://bsolongo.com'),
   openGraph: {
     title: 'Solongo B.',
-    description: 'Building futures that can\'t be taken away.',
+    description: 'Children’s author and creator of the Highlight educational IP program.',
     url: 'https://bsolongo.com',
     siteName: 'Solongo B.',
     locale: 'en_US',
