@@ -17,34 +17,34 @@ export default function Preloader() {
 
       const tl = gsap.timeline()
 
-      // 1. Slide name up into view
+      // 1. Slide name up into view  (~0–0.45s)
       tl.from('.pl-name', {
         y: '110%',
-        duration: 0.9,
+        duration: 0.45,
         ease: 'power4.out',
-        delay: 0.1,
+        delay: 0,
       })
-      // 2. Grow the red line
+      // 2. Grow the red line  (~0.3–0.58s)
       .to('.pl-line', {
         scaleX: 1,
-        duration: 0.55,
+        duration: 0.28,
         ease: 'power2.inOut',
-      }, '-=0.2')
-      // 3. Brief hold, then signal Hero to start
+      }, '-=0.15')
+      // 3. Brief hold, then signal Hero to start  (~0.68s)
       .add(() => {
         window.dispatchEvent(new CustomEvent('preloaderExiting'))
         document.body.style.overflow = ''
-      }, '+=0.25')
-      // 4. Curtain rises — top panel slides up
+      }, '+=0.1')
+      // 4. Curtain rises — top panel slides up  (~0.68–1.23s)
       .to('.pl-top', {
         yPercent: -100,
-        duration: 0.95,
+        duration: 0.55,
         ease: 'power4.inOut',
       })
       // 5. Bottom panel drops down simultaneously (split-wipe reveal)
       .to('.pl-bottom', {
         yPercent: 100,
-        duration: 0.95,
+        duration: 0.55,
         ease: 'power4.inOut',
         onComplete: () => {
           overlay.style.display = 'none'

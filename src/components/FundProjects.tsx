@@ -11,7 +11,6 @@ const PROJECTS = [
     bg: 'bg-ink',
     fg: 'text-cream',
     accent: 'text-blush',
-    // rgba values matching fg color for inline-style mock image frame
     frameRgba: 'rgba(247,243,238,',
     cta: 'Explore Model',
   },
@@ -80,7 +79,9 @@ export default function FundProjects() {
       gsap.registerPlugin(ScrollTrigger)
 
       ctx = gsap.context(() => {
-        const totalScroll = () => track.scrollWidth - window.innerWidth
+        // Use offsetWidth (CSS-computed) rather than scrollWidth to avoid any
+        // influence from the overflow:hidden parent on the reported width.
+        const totalScroll = () => track.offsetWidth - window.innerWidth
 
         gsap.to(track, {
           x: () => -totalScroll(),
@@ -126,11 +127,6 @@ export default function FundProjects() {
       </div>
 
       {/* ── Desktop: pinned horizontal scroll ── */}
-      {/*
-        bg-ink here is CRITICAL — without a background the GSAP pin spacer
-        (a transparent div injected into the DOM) lets the cream body bleed
-        through, making the entire section appear white.
-      */}
       <div
         ref={outerRef}
         className="hidden md:block relative bg-ink"
@@ -144,14 +140,65 @@ export default function FundProjects() {
           {PROJECTS.map((p, i) => (
             <div
               key={i}
-              className={`${p.bg} flex-shrink-0 flex`}
+              className={`${p.bg} flex-shrink-0 flex flex-col justify-end relative`}
               style={{ width: '100vw', height: '100vh' }}
             >
-              {/* ── Text column (left 55%) ── */}
+              {/* ── Mock image placeholder (right half, absolutely positioned) ── */}
+              {/*
+                Positioned absolutely so it has ZERO effect on flex layout /
+                track.offsetWidth — the scroll calculation stays reliable.
+                Replace with <Image> once real photography is available.
+              */}
               <div
-                className="flex flex-col justify-end px-12 lg:px-24 pb-20"
-                style={{ width: '55%' }}
+                className="absolute top-0 right-0 bottom-0 flex items-center justify-center"
+                style={{ width: '42%' }}
+                aria-hidden
               >
+                {/* Tinted background hint */}
+                <div
+                  className="absolute inset-0"
+                  style={{ background: `${p.frameRgba}0.03)` }}
+                />
+                {/* Frame */}
+                <div
+                  className="relative"
+                  style={{ width: '68%', aspectRatio: '3 / 4' }}
+                >
+                  <div
+                    className="absolute inset-0"
+                    style={{ border: `1px solid ${p.frameRgba}0.12)` }}
+                  />
+                  <div
+                    className="absolute inset-0"
+                    style={{ background: `${p.frameRgba}0.04)` }}
+                  />
+                  {/* Diagonal cross — standard mock convention */}
+                  <svg
+                    className="absolute inset-0 w-full h-full"
+                    xmlns="http://www.w3.org/2000/svg"
+                    preserveAspectRatio="none"
+                  >
+                    <line x1="0" y1="0" x2="100%" y2="100%"
+                      stroke={`${p.frameRgba}0.10)`} strokeWidth="1" />
+                    <line x1="100%" y1="0" x2="0" y2="100%"
+                      stroke={`${p.frameRgba}0.10)`} strokeWidth="1" />
+                  </svg>
+                  <span
+                    className={`absolute top-3 left-3 font-sans text-[9px] tracking-[0.35em] uppercase ${p.accent} opacity-40`}
+                  >
+                    {p.num} / {String(PROJECTS.length).padStart(2, '0')}
+                  </span>
+                  <span
+                    className="absolute bottom-3 right-3 font-sans text-[9px] tracking-[0.3em] uppercase"
+                    style={{ color: `${p.frameRgba}0.22)` }}
+                  >
+                    Photo
+                  </span>
+                </div>
+              </div>
+
+              {/* ── Text content (original layout, left ~55%) ── */}
+              <div className="relative z-10 px-12 lg:px-24 pb-20" style={{ maxWidth: '58%' }}>
                 <p
                   className={`font-display font-light leading-none ${p.accent} mb-4`}
                   style={{ fontSize: 'clamp(5rem, 14vw, 14rem)', opacity: 0.15 }}
@@ -178,76 +225,6 @@ export default function FundProjects() {
                 >
                   {p.cta} <span>→</span>
                 </a>
-              </div>
-
-              {/* ── Mock image column (right 45%) ── */}
-              {/*
-                Placeholder for real photography — uses an SVG crosshair frame
-                so the layout composition is visible even before images are
-                uploaded.  Replace the inner <div> with a Next/Image once
-                the actual asset is ready.
-              */}
-              <div
-                className="relative flex items-center justify-center overflow-hidden"
-                style={{ width: '45%' }}
-              >
-                {/* Subtle tinted fill so the column reads as "image area" */}
-                <div
-                  className="absolute inset-0"
-                  style={{ background: `${p.frameRgba}0.03)` }}
-                />
-
-                {/* Mock image frame */}
-                <div
-                  className="relative"
-                  style={{ width: '62%', aspectRatio: '3 / 4' }}
-                >
-                  {/* Outer border */}
-                  <div
-                    className="absolute inset-0"
-                    style={{ border: `1px solid ${p.frameRgba}0.12)` }}
-                  />
-
-                  {/* Inner fill */}
-                  <div
-                    className="absolute inset-0"
-                    style={{ background: `${p.frameRgba}0.04)` }}
-                  />
-
-                  {/* SVG diagonal cross — standard mock-image convention */}
-                  <svg
-                    className="absolute inset-0 w-full h-full"
-                    xmlns="http://www.w3.org/2000/svg"
-                    preserveAspectRatio="none"
-                    aria-hidden
-                  >
-                    <line
-                      x1="0" y1="0" x2="100%" y2="100%"
-                      stroke={`${p.frameRgba}0.10)`}
-                      strokeWidth="1"
-                    />
-                    <line
-                      x1="100%" y1="0" x2="0" y2="100%"
-                      stroke={`${p.frameRgba}0.10)`}
-                      strokeWidth="1"
-                    />
-                  </svg>
-
-                  {/* Top-left index label */}
-                  <span
-                    className={`absolute top-4 left-4 font-sans text-[9px] tracking-[0.35em] uppercase ${p.accent} opacity-40`}
-                  >
-                    {p.num} / {String(PROJECTS.length).padStart(2, '0')}
-                  </span>
-
-                  {/* Bottom-right "Photo" label */}
-                  <span
-                    className="absolute bottom-4 right-4 font-sans text-[9px] tracking-[0.3em] uppercase"
-                    style={{ color: `${p.frameRgba}0.25)` }}
-                  >
-                    Photo
-                  </span>
-                </div>
               </div>
             </div>
           ))}

@@ -31,7 +31,8 @@ export default function Hero() {
 
     const onExiting = () => runAnim()
     window.addEventListener('preloaderExiting', onExiting, { once: true })
-    const fallback = setTimeout(runAnim, 2500)
+    // Fallback matches new preloader duration (~1.2s) + small buffer
+    const fallback = setTimeout(runAnim, 1400)
 
     return () => {
       ctx?.revert()
