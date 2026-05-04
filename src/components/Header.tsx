@@ -1,15 +1,19 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 
 const NAV = ['About', 'Fund', 'Apply', 'Book', 'Press', 'Contact']
+const NAV_PAGES = [{ label: 'Gallery', href: '/gallery' }]
 
 export default function Header() {
+  const pathname = usePathname()
   const [hidden, setHidden] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const prevY = useRef(0)
+  const forceDark = pathname === '/gallery'
 
   useEffect(() => {
     const onScroll = () => {
@@ -27,7 +31,7 @@ export default function Header() {
       <header
         className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
           hidden ? '-translate-y-full' : 'translate-y-0'
-        } ${scrolled ? 'bg-ink/95 backdrop-blur-sm' : 'bg-transparent'}`}
+        } ${(scrolled || forceDark) ? 'bg-ink/95 backdrop-blur-sm' : 'bg-transparent'}`}
       >
         <nav className="flex items-center justify-between px-6 md:px-12 lg:px-20 py-5">
           <Link
@@ -45,6 +49,16 @@ export default function Header() {
                   className="font-sans text-[11px] tracking-[0.25em] uppercase text-cream/60 hover:text-cream transition-colors duration-300"
                 >
                   {item}
+                </Link>
+              </li>
+            ))}
+            {NAV_PAGES.map((item) => (
+              <li key={item.label}>
+                <Link
+                  href={item.href}
+                  className="font-sans text-[11px] tracking-[0.25em] uppercase text-cream/60 hover:text-cream transition-colors duration-300"
+                >
+                  {item.label}
                 </Link>
               </li>
             ))}
@@ -91,6 +105,17 @@ export default function Header() {
                 className="font-display text-5xl italic font-light text-cream hover:text-gold transition-colors duration-300"
               >
                 {item}
+              </Link>
+            </li>
+          ))}
+          {NAV_PAGES.map((item) => (
+            <li key={item.label}>
+              <Link
+                href={item.href}
+                onClick={() => setMenuOpen(false)}
+                className="font-display text-5xl italic font-light text-cream hover:text-gold transition-colors duration-300"
+              >
+                {item.label}
               </Link>
             </li>
           ))}

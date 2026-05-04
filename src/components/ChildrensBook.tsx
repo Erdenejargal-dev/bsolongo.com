@@ -39,21 +39,21 @@ export default function ChildrensBook() {
 
   return (
     <section ref={sectionRef} id="book" className="py-32 lg:py-48 bg-cream">
-      <div className="px-6 md:px-12 lg:px-20 grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+      <div className="px-6 md:px-12 lg:px-8 grid lg:grid-cols-2 gap-16 lg:gap-16 items-center">
 
         {/* Book cover — real square photo */}
-        <div className="book-cover relative mx-auto max-w-sm lg:max-w-none">
+        <div className="book-cover relative mx-auto max-w-2xl lg:max-w-none">
           {/* Soft shadow */}
           <div className="absolute -inset-6 bg-ink/8 blur-3xl rounded-sm" />
 
           {/* Square image */}
           <div className="relative aspect-square overflow-hidden">
             <Image
-              src="https://res.cloudinary.com/dedugs945/image/upload/v1725099268/channels4_profile_th9pt6.jpg"
-              alt="Oyunii Umch — Children's Book by Solongo B."
+              src="https://res.cloudinary.com/dmntnayyw/image/upload/v1777865895/IMG_8017_ukzady.jpg"
+              alt="IP Developer — Children's Book by Solongo B."
               fill
               className="object-cover"
-              sizes="(max-width: 1024px) 90vw, 45vw"
+              sizes="(max-width: 1024px) 180vw, 90vw"
             />
             {/* Subtle brand tint on hover area */}
             <div className="absolute inset-0 bg-forest/10 mix-blend-multiply" />
@@ -66,10 +66,8 @@ export default function ChildrensBook() {
 
           {/* Bottom label strip */}
           <div className="bg-ink px-5 py-3 flex items-center justify-between">
-            <span className="font-display italic text-cream text-lg">Oyunii Umch</span>
-            <span className="font-sans text-[10px] tracking-widest uppercase text-cream/35">
-              NTV · MoE
-            </span>
+            <span className="font-display italic text-cream text-lg">Intellectual property developer</span>
+            
           </div>
         </div>
 

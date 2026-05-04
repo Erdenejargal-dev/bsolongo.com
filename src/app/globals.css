@@ -88,6 +88,21 @@ body::after {
   to   { transform: translateX(-50%) }
 }
 
+@keyframes marquee-reverse {
+  from { transform: translateX(-50%) }
+  to   { transform: translateX(0) }
+}
+
+@keyframes marquee-vertical {
+  from { transform: translateY(0) }
+  to   { transform: translateY(-50%) }
+}
+
+@keyframes marquee-vertical-reverse {
+  from { transform: translateY(-50%) }
+  to   { transform: translateY(0) }
+}
+
 /* ── Text clip animation helper ── */
 .clip-text {
   overflow: hidden;
