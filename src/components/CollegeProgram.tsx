@@ -6,6 +6,8 @@ export default function CollegeProgram() {
   const sectionRef = useRef<HTMLElement>(null)
   const [form, setForm] = useState({ name: '', email: '', school: '', university: '' })
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
 
   useEffect(() => {
     let ctx: { revert: () => void } | null = null
@@ -40,9 +42,23 @@ export default function CollegeProgram() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setForm({ ...form, [e.target.name]: e.target.value })
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setSubmitted(true)
+    setLoading(true)
+    setError('')
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      })
+      if (!res.ok) throw new Error('Failed')
+      setSubmitted(true)
+    } catch {
+      setError('Something went wrong. Please try again.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -92,15 +108,12 @@ export default function CollegeProgram() {
             <span className="text-blush">potential.</span>
           </h2>
 
-          <p className="font-sans text-[15px] leading-loose text-cream/50 mb-10 max-w-sm">
-            Personalised strategy sessions, AI-assisted applications,
-            and a global network that opens doors money can't buy.
-          </p>
+    
 
           <ul className="space-y-4 mb-12">
             {[
               'Personalised university strategy',
-              'AI-powered essay & application tools',
+              'Essay & application sessions',
               'Global alumni network access',
               'Direct mentor connections at target schools',
             ].map((feat, i) => (
@@ -161,11 +174,15 @@ export default function CollegeProgram() {
                 <div className="pt-8">
                   <button
                     type="submit"
-                    className="w-full py-4 bg-rose text-cream font-sans text-[11px] tracking-[0.25em] uppercase hover:bg-wine transition-colors duration-300"
+                    disabled={loading}
+                    className="w-full py-4 bg-rose text-cream font-sans text-[11px] tracking-[0.25em] uppercase hover:bg-wine transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    Join the 2028 Waitlist
+                    {loading ? 'Sending…' : 'Join the 2028 Waitlist'}
                   </button>
                 </div>
+                {error && (
+                  <p className="pt-3 font-sans text-[11px] text-rose text-center">{error}</p>
+                )}
                 <p className="pt-4 font-sans text-[11px] text-cream/20 text-center">
                   hello@bsolongo.com · Never shared
                 </p>

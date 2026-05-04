@@ -13,7 +13,8 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const prevY = useRef(0)
-  const forceDark = pathname === '/gallery'
+  const forceDark = pathname !== '/'
+  const anchorHref = (id: string) => pathname === '/' ? `#${id}` : `/#${id}`
 
   useEffect(() => {
     const onScroll = () => {
@@ -45,7 +46,7 @@ export default function Header() {
             {NAV.map((item) => (
               <li key={item}>
                 <Link
-                  href={`#${item.toLowerCase()}`}
+                  href={anchorHref(item.toLowerCase())}
                   className="font-sans text-[11px] tracking-[0.25em] uppercase text-cream/60 hover:text-cream transition-colors duration-300"
                 >
                   {item}
@@ -65,12 +66,12 @@ export default function Header() {
           </ul>
 
           <div className="flex items-center gap-4">
-            <a
-              href="#college"
+            <Link
+              href={anchorHref('college')}
               className="hidden lg:inline-flex items-center px-5 py-2 border border-gold text-gold font-sans text-[11px] tracking-[0.2em] uppercase hover:bg-gold hover:text-ink transition-all duration-300"
             >
               Join Waitlist
-            </a>
+            </Link>
             <button
               className="lg:hidden p-2 space-y-1.5"
               onClick={() => setMenuOpen(!menuOpen)}
@@ -100,7 +101,7 @@ export default function Header() {
           {NAV.map((item) => (
             <li key={item}>
               <Link
-                href={`#${item.toLowerCase()}`}
+                href={anchorHref(item.toLowerCase())}
                 onClick={() => setMenuOpen(false)}
                 className="font-display text-5xl italic font-light text-cream hover:text-gold transition-colors duration-300"
               >
@@ -120,13 +121,13 @@ export default function Header() {
             </li>
           ))}
         </ul>
-        <a
-          href="#college"
+        <Link
+          href={anchorHref('college')}
           onClick={() => setMenuOpen(false)}
           className="mt-12 inline-flex items-center px-6 py-3 border border-gold text-gold font-sans text-xs tracking-[0.2em] uppercase w-fit"
         >
           Join Waitlist
-        </a>
+        </Link>
       </div>
     </>
   )
