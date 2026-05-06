@@ -59,7 +59,7 @@ export default function PhotoBand() {
       <div className="photoband-label absolute bottom-7 left-6 md:left-12 lg:left-20 flex items-center gap-3">
         <span className="block w-8 h-px bg-cream/40" />
         <span className="font-sans text-[10px] tracking-[0.35em] uppercase text-cream/50">
-          Ulaanbaatar · Mongolia
+          Founder Spotlight
         </span>
       </div>
     </div>

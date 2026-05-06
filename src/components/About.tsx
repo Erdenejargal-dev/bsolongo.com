@@ -6,7 +6,7 @@ import Image from 'next/image'
 const STATS = [
   { value: 5,    suffix: '',  label: 'Fund Programs' },
   { value: 132,  suffix: '+', label: 'Kindergartens Reached' },
-  { value: 142,  suffix: '+', label: 'Book Characters' },
+  { value: 100,  suffix: '+', label: 'Books' },
   { value: 2028, suffix: '',  label: 'College Cohort Opens' },
 ]
 
