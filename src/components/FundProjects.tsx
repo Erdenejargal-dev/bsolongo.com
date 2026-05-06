@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import Image from 'next/image'
 
 const PROJECTS = [
   {
@@ -11,8 +12,8 @@ const PROJECTS = [
     bg: 'bg-ink',
     fg: 'text-cream',
     accent: 'text-blush',
-    frameRgba: 'rgba(247,243,238,',
     cta: 'Explore Model',
+    image: 'https://res.cloudinary.com/dmntnayyw/image/upload/f_auto,q_auto,w_800/v1778067217/hero-bg_tfrj0q.jpg',
   },
   {
     num: '02',
@@ -22,8 +23,8 @@ const PROJECTS = [
     bg: 'bg-wine',
     fg: 'text-cream',
     accent: 'text-blush',
-    frameRgba: 'rgba(247,243,238,',
     cta: 'Apply Now',
+    image: 'https://res.cloudinary.com/dmntnayyw/image/upload/f_auto,q_auto,w_800/v1777865905/IMG_8584_xtsoos.heic',
   },
   {
     num: '03',
@@ -33,8 +34,8 @@ const PROJECTS = [
     bg: 'bg-cream',
     fg: 'text-ink',
     accent: 'text-wine',
-    frameRgba: 'rgba(58,5,25,',
     cta: 'Apply Now',
+    image: 'https://res.cloudinary.com/dmntnayyw/image/upload/f_auto,q_auto,w_800/v1777865870/IMG_2366_us63ri.heic',
   },
   {
     num: '04',
@@ -44,8 +45,8 @@ const PROJECTS = [
     bg: 'bg-blush',
     fg: 'text-ink',
     accent: 'text-wine',
-    frameRgba: 'rgba(58,5,25,',
     cta: 'View Network',
+    image: 'https://res.cloudinary.com/dmntnayyw/image/upload/f_auto,q_auto,w_800/v1777865873/IMG_3424_hov9xe.heic',
   },
   {
     num: '05',
@@ -55,8 +56,8 @@ const PROJECTS = [
     bg: 'bg-ink',
     fg: 'text-cream',
     accent: 'text-rose',
-    frameRgba: 'rgba(247,243,238,',
     cta: 'Join Community',
+    image: 'https://res.cloudinary.com/dmntnayyw/image/upload/f_auto,q_auto,w_800/v1777865843/IMG_0646_n3pmvf.heic',
   },
 ]
 
@@ -144,56 +145,20 @@ export default function FundProjects() {
               style={{ width: '100vw', height: '100vh' }}
             >
               {/* ── Mock image placeholder (right half, absolutely positioned) ── */}
-              {/*
-                Positioned absolutely so it has ZERO effect on flex layout /
-                track.offsetWidth — the scroll calculation stays reliable.
-                Replace with <Image> once real photography is available.
-              */}
+              {/* Project image — absolutely positioned so it never affects track.offsetWidth */}
               <div
                 className="absolute top-0 right-0 bottom-0 flex items-center justify-center"
                 style={{ width: '42%' }}
                 aria-hidden
               >
-                {/* Tinted background hint */}
-                <div
-                  className="absolute inset-0"
-                  style={{ background: `${p.frameRgba}0.03)` }}
-                />
-                {/* Frame */}
-                <div
-                  className="relative"
-                  style={{ width: '68%', aspectRatio: '3 / 4' }}
-                >
-                  <div
-                    className="absolute inset-0"
-                    style={{ border: `1px solid ${p.frameRgba}0.12)` }}
+                <div className="relative w-full h-full">
+                  <Image
+                    src={p.image}
+                    alt={p.name}
+                    fill
+                    className="object-cover"
+                    sizes="42vw"
                   />
-                  <div
-                    className="absolute inset-0"
-                    style={{ background: `${p.frameRgba}0.04)` }}
-                  />
-                  {/* Diagonal cross — standard mock convention */}
-                  <svg
-                    className="absolute inset-0 w-full h-full"
-                    xmlns="http://www.w3.org/2000/svg"
-                    preserveAspectRatio="none"
-                  >
-                    <line x1="0" y1="0" x2="100%" y2="100%"
-                      stroke={`${p.frameRgba}0.10)`} strokeWidth="1" />
-                    <line x1="100%" y1="0" x2="0" y2="100%"
-                      stroke={`${p.frameRgba}0.10)`} strokeWidth="1" />
-                  </svg>
-                  <span
-                    className={`absolute top-3 left-3 font-sans text-[9px] tracking-[0.35em] uppercase ${p.accent} opacity-40`}
-                  >
-                    {p.num} / {String(PROJECTS.length).padStart(2, '0')}
-                  </span>
-                  <span
-                    className="absolute bottom-3 right-3 font-sans text-[9px] tracking-[0.3em] uppercase"
-                    style={{ color: `${p.frameRgba}0.22)` }}
-                  >
-                    Photo
-                  </span>
                 </div>
               </div>
 
@@ -240,6 +205,9 @@ export default function FundProjects() {
       <div className="md:hidden">
         {PROJECTS.map((p, i) => (
           <div key={i} className={`${p.bg} px-6 py-16`}>
+            <div className="relative w-full aspect-video mb-8 overflow-hidden">
+              <Image src={p.image} alt={p.name} fill className="object-cover" sizes="100vw" />
+            </div>
             <p className={`font-display font-light text-6xl leading-none ${p.accent} mb-3`} style={{ opacity: 0.18 }}>
               {p.num}
             </p>
