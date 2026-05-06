@@ -87,7 +87,7 @@ export default function Hero() {
       {/* ── Main content ── */}
       <div className="relative z-10 px-6 md:px-12 lg:px-20 pt-44 pb-24">
         <p className="hero-label font-sans text-[11px] tracking-[0.35em] uppercase text-blush mb-8">
-          Founder · Hugo Endowment Fund · Mongolia
+          Founder · Entrepreneur · IP developer · Mother
         </p>
 
         <h1
