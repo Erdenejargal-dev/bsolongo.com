@@ -115,7 +115,7 @@ export default function CollegeProgram() {
               'Personalised university strategy',
               'Essay & application sessions',
               'Global alumni network access',
-              'Direct mentor connections at target schools',
+              'Registration fee 1500$ | 2 years program 50000$',
             ].map((feat, i) => (
               <li key={i} className="flex items-start gap-3">
                 <span className="mt-[7px] w-3 h-px bg-rose flex-shrink-0" />

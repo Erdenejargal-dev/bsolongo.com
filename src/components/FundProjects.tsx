@@ -79,7 +79,8 @@ const PROJECTS = [
     fg: 'text-cream',
     accent: 'text-blush',
     cta: 'Open the Vault',
-    image: 'https://res.cloudinary.com/dmntnayyw/image/upload/f_auto,q_auto,w_800/v1777865843/IMG_0646_n3pmvf.heic',
+    image: 'https://m-bank.mn/icons/navbar/ic_m_large.png',
+    imageFit: 'contain' as const,
   },
 ]
 
@@ -178,7 +179,7 @@ export default function FundProjects() {
                     src={p.image}
                     alt={p.name}
                     fill
-                    className="object-cover"
+                    className={p.imageFit === 'contain' ? 'object-contain p-12' : 'object-cover'}
                     sizes="42vw"
                   />
                 </div>
@@ -228,7 +229,13 @@ export default function FundProjects() {
         {PROJECTS.map((p, i) => (
           <div key={i} className={`${p.bg} px-6 py-16`}>
             <div className="relative w-full aspect-video mb-8 overflow-hidden">
-              <Image src={p.image} alt={p.name} fill className="object-cover" sizes="100vw" />
+              <Image
+                src={p.image}
+                alt={p.name}
+                fill
+                className={p.imageFit === 'contain' ? 'object-contain p-8' : 'object-cover'}
+                sizes="100vw"
+              />
             </div>
             <p className={`font-display font-light text-6xl leading-none ${p.accent} mb-3`} style={{ opacity: 0.18 }}>
               {p.num}

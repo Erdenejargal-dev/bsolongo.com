@@ -61,7 +61,7 @@ export default function ChildrensBook() {
 
           {/* Badge */}
           <div className="absolute -top-3 -right-3 bg-gold text-ink font-sans text-[10px] tracking-[0.2em] uppercase px-4 py-2 z-10">
-            142+ Characters
+            132+ Characters
           </div>
 
           {/* Bottom label strip */}
