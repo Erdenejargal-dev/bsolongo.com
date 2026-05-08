@@ -88,7 +88,7 @@ export default function About() {
         {/* Portrait */}
         <div className="about-portrait relative h-[60vw] lg:h-screen overflow-hidden">
           <Image
-            src="https://res.cloudinary.com/dmntnayyw/image/upload/w_1600,f_auto,q_auto/v1777865875/IMG_3839_yq157q.jpg"
+            src="https://res.cloudinary.com/dmntnayyw/image/upload/w_600,f_auto,q_auto:good/v1777865896/IMG_7379_figwsb.heic"
             alt="Solongo B."
             fill
             className="object-cover object-top"
