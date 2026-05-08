@@ -87,8 +87,8 @@ export default function ChildrensBook() {
           </h2>
 
           <p className="font-sans text-[15px] leading-loose text-ink/65">
-            <em>Oyunii Umch</em> ("Treasure of the Mind") is Solongo B.'s landmark children's book
-            series — 142 original characters who teach Mongolian children about curiosity, resilience,
+          Solongo .B is the creator of a beloved children's book
+            series 142 original characters who teach Mongolian children about curiosity, resilience,
             and the power of education. Endorsed by the Ministry of Education and adapted for NTV Mongolia.
           </p>
 
