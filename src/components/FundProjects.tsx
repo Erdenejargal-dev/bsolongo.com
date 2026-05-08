@@ -59,6 +59,28 @@ const PROJECTS = [
     cta: 'Join Community',
     image: 'https://res.cloudinary.com/dmntnayyw/image/upload/f_auto,q_auto,w_800/v1777865843/IMG_0646_n3pmvf.heic',
   },
+  {
+    num: '06',
+    name: 'Human OS™',
+    tagline: 'Behavioral + emotional operating system for human development',
+    desc: 'Most schools measure academic performance. We study the human behind it. Human OS™ is a proprietary development framework like clinical guidelines for doctors giving educators and mentors a standardized system to understand each child\'s emotional, behavioral, and identity development and deliver the right intervention.',
+    bg: 'bg-cream',
+    fg: 'text-ink',
+    accent: 'text-wine',
+    cta: 'Explore Framework',
+    image: 'https://res.cloudinary.com/dmntnayyw/image/upload/f_auto,q_auto,w_800/v1777865870/IMG_2366_us63ri.heic',
+  },
+  {
+    num: '07',
+    name: 'M.Bank™',
+    tagline: 'Human Memory Archive — family legacy preserved for generations',
+    desc: 'Some families inherit land. Some inherit money. The rarest inheritance is memory. In collaboration with Human International School, M.Bank™ transforms the Mongolian Avdar tradition into a modern Human Memory Archive preserving childhood, family history, and emotional moments through digital and physical memory systems.',
+    bg: 'bg-wine',
+    fg: 'text-cream',
+    accent: 'text-blush',
+    cta: 'Open the Vault',
+    image: 'https://res.cloudinary.com/dmntnayyw/image/upload/f_auto,q_auto,w_800/v1777865843/IMG_0646_n3pmvf.heic',
+  },
 ]
 
 export default function FundProjects() {
@@ -118,7 +140,7 @@ export default function FundProjects() {
           className="font-display italic font-light text-cream leading-none"
           style={{ fontSize: 'clamp(3rem, 8vw, 7.5rem)' }}
         >
-          Five Programs.
+          Our Programs.
           <br />
           <span className="text-rose">One Mission.</span>
         </h2>

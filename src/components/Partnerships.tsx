@@ -12,6 +12,7 @@ const PARTNERS = [
   { name: 'Oyutolgoi', note: 'Corporate Partner' },
   { name: 'NTV Mongolia', note: 'Broadcast Partner' },
   { name: 'Berlin Competition', note: '2nd Stage Accepted' },
+  { name: 'Asian Development Bank', note: 'Development Partner' },
 ]
 
 export default function Partnerships() {
