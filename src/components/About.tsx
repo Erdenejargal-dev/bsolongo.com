@@ -123,7 +123,7 @@ export default function About() {
             </p>
             <p className="font-sans text-[15px] leading-[1.9] text-ink/60">
               Recognised by Forbes five times and endorsed by the Mongolian Ministry of Education,
-              her children's book series <em>Oyunii Umch</em> features 142+ original characters now
+              her children's book series features 142+ original characters now
               embedded in kindergarten curricula nationwide.
             </p>
           </div>

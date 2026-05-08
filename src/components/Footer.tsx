@@ -27,7 +27,7 @@ export default function Footer() {
             <p className="font-display text-4xl italic font-light text-cream">Solongo B.</p>
             <p className="font-sans text-[14px] leading-loose text-cream/45 max-w-xs">
               Mongolian educational innovator. Founder of Hugo Endowment Fund.
-              Forbes award winner. Author of Oyunii Umch.
+              Forbes award winner. Author of Children's book series.
             </p>
             <a
               href="mailto:hello@bsolongo.com"

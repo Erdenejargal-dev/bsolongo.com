@@ -30,7 +30,7 @@ export const DEFAULT_ARTICLES: Article[] = [
   {
     id: '3',
     category: 'NTV Mongolia',
-    title: 'Oyunii Umch: 142 Characters, One Vision for Mongolian Children',
+    title: 'Children's book series' : 142 Characters, One Vision for Mongolian Children',
     excerpt: "The children's book series that captured the hearts of educators, parents, and a Ministry — and its author's even bigger ambitions.",
     readTime: '5 min',
     date: '2023',
