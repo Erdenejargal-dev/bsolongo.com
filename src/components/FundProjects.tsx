@@ -69,19 +69,7 @@ const PROJECTS = [
     accent: 'text-wine',
     cta: 'Explore Framework',
     image: 'https://res.cloudinary.com/dmntnayyw/image/upload/f_auto,q_auto,w_800/v1777865870/IMG_2366_us63ri.heic',
-  },
-  {
-    num: '07',
-    name: 'M.Bank™',
-    tagline: 'Human Memory Archive — family legacy preserved for generations',
-    desc: 'Some families inherit land. Some inherit money. The rarest inheritance is memory. In collaboration with Human International School, M.Bank™ transforms the Mongolian Avdar tradition into a modern Human Memory Archive preserving childhood, family history, and emotional moments through digital and physical memory systems.',
-    bg: 'bg-wine',
-    fg: 'text-cream',
-    accent: 'text-blush',
-    cta: 'Open the Vault',
-    image: 'https://m-bank.mn/icons/navbar/ic_m_large.png',
-    imageFit: 'contain' as const,
-  },
+  }
 ]
 
 export default function FundProjects() {
