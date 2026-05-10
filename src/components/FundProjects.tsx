@@ -167,7 +167,7 @@ export default function FundProjects() {
                     src={p.image}
                     alt={p.name}
                     fill
-                    className={p.imageFit === 'contain' ? 'object-contain p-12' : 'object-cover'}
+                    className="object-cover"
                     sizes="42vw"
                   />
                 </div>
@@ -221,7 +221,7 @@ export default function FundProjects() {
                 src={p.image}
                 alt={p.name}
                 fill
-                className={p.imageFit === 'contain' ? 'object-contain p-8' : 'object-cover'}
+                className="object-cover"
                 sizes="100vw"
               />
             </div>
