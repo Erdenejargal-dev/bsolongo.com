@@ -41,7 +41,7 @@ export const DEFAULT_ARTICLES: Article[] = [
 export async function getArticles(): Promise<Article[]> {
   try {
     const url = `https://res.cloudinary.com/${process.env.CLOUDINARY_CLOUD_NAME}/raw/upload/bsolongo.com/articles.json`
-    const res = await fetch(url, { next: { revalidate: 60 } })
+    const res = await fetch(url, { cache: 'no-store' })
     if (!res.ok) return DEFAULT_ARTICLES
     return await res.json()
   } catch {

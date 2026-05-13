@@ -48,7 +48,7 @@ export async function POST(req: NextRequest) {
 
   const updated = [newArticle, ...base]
   await saveArticles(updated)
-  revalidatePath('/')
+  revalidatePath('/', 'page')
 
   return NextResponse.json({ ok: true, article: newArticle })
 }
@@ -58,6 +58,6 @@ export async function DELETE(req: NextRequest) {
   const current = await getArticles()
   const updated = current.filter(a => a.id !== id)
   await saveArticles(updated)
-  revalidatePath('/')
+  revalidatePath('/', 'page')
   return NextResponse.json({ ok: true })
 }
